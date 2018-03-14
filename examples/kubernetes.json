@@ -2,18 +2,48 @@
   "apiVersion": "vlabs",
   "properties": {
     "orchestratorProfile": {
-      "orchestratorType": "Kubernetes"
+      "orchestratorType": "Kubernetes",
+      "orchestratorRelease": "1.9",
+      "kubernetesConfig": {
+        "addons": [
+          {
+            "name": "tiller",
+            "containers": [
+              {
+                "name": "tiller",
+                "image": "gcr.io/kubernetes-helm/tiller:v2.8.2",
+                "cpuRequests": "1",
+                "memoryRequests": "1024Mi",
+                "cpuLimits": "1",
+                "memoryLimits": "1024Mi"
+              }
+            ]
+          },
+          {
+            "name": "kubernetes-dashboard",
+            "containers": [
+              {
+                "name": "kubernetes-dashboard",
+                "cpuRequests": "50m",
+                "memoryRequests": "512Mi",
+                "cpuLimits": "50m",
+                "memoryLimits": "512Mi"
+              }
+            ]
+          }
+        ]
+      }
     },
     "masterProfile": {
-      "count": 1,
-      "dnsPrefix": "",
+      "count": 3,
+      "dnsPrefix": "logistiotest",
       "vmSize": "Standard_D2_v2"
     },
     "agentPoolProfiles": [
       {
         "name": "agentpool1",
-        "count": 3,
-        "vmSize": "Standard_D2_v2",
+        "count": 2,
+        "vmSize": "Standard_D14_v2",
         "availabilityProfile": "AvailabilitySet"
       }
     ],
@@ -22,14 +52,14 @@
       "ssh": {
         "publicKeys": [
           {
-            "keyData": ""
+            "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDqb+bQ+o0LeO0hFZEy8lKXzroYRfrwJMoS8Qgz5xutWVUrPdDwTJzzdy8bM+EygbXPE6hBZqk9s0OLjsdNHw9xjx9U3xrkVJEI0jGeLBVfj355Ff5Id+CKZgS6jXPRmiOrn+XWZP1P6YtVMh1kOL5+Ad+lg+rG0G+xIxjfBKPyDSCY1pf4lBKqQw2ES7XwHhzxZIYiMS83cr32cu9wyQlFB+Yw/3HdlgnkINy2hDcfleJIG4hf6MNU0BMKFNJS3alNsn4P1S8o/i91QK2u/gzfKyzXMd9MuiyGMMFzCMtF0MKCZ5EZCZbd+iGngFOZ+gh/RIW7IcUGj2f5gz5eTOdh Eamon@Eamons-MacBook-Pro.local"
           }
         ]
       }
     },
     "servicePrincipalProfile": {
-      "clientId": "",
-      "secret": ""
+      "clientId": "73620c07-b940-424a-9cca-fb24ebb33230",
+      "secret": "65c775f8-c265-4532-9cf8-b0f00b305122"
     }
   }
 }
