@@ -20,6 +20,10 @@
             ]
           },
           {
+            "name": "metrics-server",
+            "enabled": true
+          },
+          {
             "name": "kubernetes-dashboard",
             "containers": [
               {
@@ -36,7 +40,7 @@
     },
     "masterProfile": {
       "count": 3,
-      "dnsPrefix": "starfish-jsprit-2",
+      "dnsPrefix": "starfish-jsprit-6",
       "vmSize": "Standard_D2_v2",
       "OSDiskSizeGB": 200
     },
