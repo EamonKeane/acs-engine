@@ -12,6 +12,8 @@ test/acs-engine-test/acs-engine-test
 _dist/
 bin/
 .env
+examples/kubernetes.json
+
 
 test/junit/
 test/acs-engine-test/acs-engine-test.exe
